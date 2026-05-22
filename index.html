@@ -1,259 +1,694 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GeoCalc Pro | License Request Portal</title>
-<style>
-:root{
-  --orange:#ea580c;--orange2:#f97316;--dark:#0f172a;--dark2:#1e293b;--muted:#64748b;--bg:#f8fafc;--line:#e2e8f0;--green:#047857;--red:#b91c1c;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top left,#fff7ed 0,#f8fafc 36%,#eef2ff 100%);color:#111827;min-height:100vh}
-.top{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0f172a,#1e293b 62%,#ea580c);color:#fff;box-shadow:0 12px 36px rgba(15,23,42,.18)}
-.bar{max-width:1020px;margin:0 auto;padding:16px 18px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#ea580c,#fb923c);display:grid;place-items:center;font-weight:900;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 10px 20px rgba(234,88,12,.25)}
-h1{font-size:20px;margin:0}.sub{font-size:11px;color:#ffedd5;letter-spacing:.07em;text-transform:uppercase;margin-top:3px}.status-pill{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;color:#fff}
-.wrap{max-width:1020px;margin:0 auto;padding:26px 18px 42px}.panel{display:none}.panel.active{display:block;animation:fade .22s ease}@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
-.hero{background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border:1px solid rgba(226,232,240,.9);border-radius:26px;padding:24px;margin-bottom:18px;box-shadow:0 18px 46px rgba(15,23,42,.08);display:grid;grid-template-columns:1.25fr .75fr;gap:18px;align-items:center}
-.hero h2{margin:0 0 10px;font-size:28px;color:#0f172a}.hero p{margin:0;color:#475569;line-height:1.7}.hero-badge{justify-self:end;background:#0f172a;color:#fff;border-radius:22px;padding:18px;min-width:230px;box-shadow:0 14px 34px rgba(15,23,42,.18)}.hero-badge b{display:block;font-size:15px;margin-bottom:5px}.hero-badge span{display:block;font-size:12px;color:#cbd5e1;line-height:1.5}
-.card{background:white;border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:0 18px 46px rgba(15,23,42,.08);max-width:880px;margin:0 auto}.card.wide{max-width:1160px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-weight:850;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#475569;margin:14px 0 7px}
-input,select{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:14px;font-size:15px;outline:none;background:white;transition:.18s ease}input:focus,select:focus{border-color:#ea580c;box-shadow:0 0 0 4px rgba(234,88,12,.14)}
-.btn{border:0;background:linear-gradient(135deg,#ea580c,#f97316);color:#fff;padding:14px 18px;border-radius:16px;font-weight:900;cursor:pointer;box-shadow:0 10px 20px rgba(234,88,12,.18);transition:.18s ease}.btn:hover{transform:translateY(-1px);box-shadow:0 14px 26px rgba(234,88,12,.23)}.btn.secondary{background:linear-gradient(135deg,#0f172a,#334155)}.btn.ghost{background:#fff;color:#0f172a;border:1px solid #cbd5e1;box-shadow:none}.btn.danger{background:linear-gradient(135deg,#b91c1c,#ef4444)}.btn:disabled{background:#94a3b8;cursor:not-allowed;transform:none;box-shadow:none}.btn.small{padding:9px 11px;border-radius:12px;font-size:12px}
-.msg{margin-top:16px;padding:14px;border-radius:14px;font-weight:800;display:none}.ok{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}.err{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}.info{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
-.tablewrap{overflow:auto;margin-top:16px;border:1px solid #e2e8f0;border-radius:18px}table{width:100%;border-collapse:collapse;background:white}th,td{padding:11px;border-bottom:1px solid #e2e8f0;text-align:left;font-size:13px;vertical-align:top}th{background:#f8fafc;color:#334155;font-size:11px;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0}tr:last-child td{border-bottom:0}.rowbtn{padding:7px 10px;border:0;border-radius:10px;font-weight:800;cursor:pointer;margin:2px}.approve{background:#dcfce7;color:#166534}.reject{background:#fee2e2;color:#991b1b}.copy{background:#e0f2fe;color:#0369a1}
-.note{font-size:12px;color:#64748b;line-height:1.6;margin-top:12px}code{background:#f1f5f9;padding:2px 5px;border-radius:6px}.admin-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.hidden-admin-text{margin:18px auto 0;text-align:center;font-size:11px;color:#94a3b8;user-select:none}.hidden-admin-text span{cursor:pointer;transition:.18s ease}.hidden-admin-text span:hover{color:#64748b;letter-spacing:.02em}.modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.62);backdrop-filter:blur(7px);padding:18px}.modal.show{display:flex;animation:fade .18s ease}.modal-card{background:#fff;border-radius:26px;border:1px solid #e2e8f0;box-shadow:0 26px 90px rgba(15,23,42,.32);width:min(440px,100%);overflow:hidden}.modal-head{padding:20px 22px;background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px}.modal-head h3{margin:0;font-size:18px}.modal-body{padding:22px}.xbtn{border:0;background:rgba(255,255,255,.1);color:#fff;border-radius:12px;width:36px;height:36px;cursor:pointer;font-size:18px}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.summary-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:12px}.summary-card b{display:block;font-size:20px;color:#0f172a}.summary-card span{font-size:11px;color:#64748b;text-transform:uppercase;font-weight:800}.toolbar{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin-top:10px}.toolbar > div{min-width:220px;flex:1}.searchInput{max-width:320px}.hide{display:none!important}.admin-open .admin-indicator{display:inline-flex}.admin-indicator{display:none;border:1px solid rgba(255,255,255,.25);background:rgba(15,23,42,.22);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;color:#fff;gap:6px;align-items:center}
-@media(max-width:820px){.grid,.hero{grid-template-columns:1fr}.hero-badge{justify-self:stretch}.summary-grid{grid-template-columns:repeat(2,1fr)}.bar{align-items:flex-start}}
-@media(max-width:540px){.wrap{padding:18px 12px}.card,.hero{border-radius:20px;padding:18px}.summary-grid{grid-template-columns:1fr}th,td{font-size:12px;padding:9px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GeoCalc Pro License Request Portal" />
+  <title>GeoCalc Pro | License Request Portal</title>
+  <style>
+    :root{
+      --orange:#ea580c;
+      --orange-2:#f97316;
+      --dark:#0f172a;
+      --dark-2:#1e293b;
+      --slate:#334155;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --green:#047857;
+      --red:#b91c1c;
+      --blue:#2563eb;
+      --amber:#b45309;
+      --shadow:0 18px 50px rgba(15,23,42,.10);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      color:#111827;
+      background:
+        radial-gradient(circle at top left, rgba(249,115,22,.12), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(15,23,42,.10), transparent 30%),
+        var(--bg);
+    }
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    button:disabled{cursor:not-allowed;opacity:.72}
+    a{color:inherit}
+    .top{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(135deg,var(--dark),var(--dark-2) 60%,#b94711);
+      color:white;
+      box-shadow:0 12px 36px rgba(15,23,42,.22);
+    }
+    .bar{
+      max-width:1120px;margin:0 auto;padding:16px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    }
+    .brand{display:flex;gap:12px;align-items:center;min-width:260px}
+    .logo{
+      width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#ff6b00,var(--orange));
+      display:grid;place-items:center;font-weight:950;letter-spacing:.03em;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),0 10px 24px rgba(234,88,12,.25);
+    }
+    .brand h1{font-size:21px;margin:0;line-height:1.1}
+    .sub{font-size:11px;color:#ffedd5;letter-spacing:.08em;text-transform:uppercase;margin-top:4px;font-weight:800}
+    .datetime-card{
+      display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end;
+      color:#fff;
+    }
+    .date-pill,.time-pill{
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.10);
+      border-radius:999px;
+      padding:9px 13px;
+      font-weight:850;
+      backdrop-filter:blur(12px);
+      white-space:nowrap;
+    }
+    .date-pill{font-size:12px;color:#ffedd5}
+    .time-pill{font-size:14px;min-width:112px;text-align:center}
+    .wrap{max-width:1120px;margin:0 auto;padding:26px 18px 42px}
+    .panel{display:none}.panel.active{display:block;animation:fadeUp .25s ease both}
+    @keyframes fadeUp{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .hero{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch;margin-bottom:18px;
+    }
+    .hero-main,.hero-side,.card,.admin-shell{
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(226,232,240,.9);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-main{padding:28px;position:relative}
+    .hero-main:before{
+      content:"";position:absolute;right:-52px;top:-52px;width:160px;height:160px;border-radius:50%;
+      background:rgba(234,88,12,.12);
+    }
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:900;color:#9a3412;background:#ffedd5;border:1px solid #fed7aa;padding:7px 10px;border-radius:999px;margin-bottom:14px}
+    .hero h2{margin:0 0 10px;font-size:30px;line-height:1.1;color:#0f172a;letter-spacing:-.03em}
+    .hero p{margin:0;color:#475569;line-height:1.7;font-size:15px}
+    .hero-side{padding:20px;background:linear-gradient(145deg,#fff,#fff7ed)}
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    .info-box{border:1px solid #fed7aa;background:#fff;padding:12px;border-radius:16px}
+    .info-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:900;color:#9a3412;margin-bottom:6px}
+    .info-value{font-weight:950;color:#0f172a;font-size:14px}
+    .card{max-width:900px;margin:0 auto;padding:0}
+    .card-head{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:linear-gradient(180deg,#fff,#fff7ed)}
+    .card-head h3{margin:0;color:#0f172a;font-size:20px}
+    .card-head p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+    .badge{display:inline-flex;align-items:center;gap:7px;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;border-radius:999px;padding:8px 11px;font-weight:900;font-size:12px}
+    .card-body{padding:22px 24px 24px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    label{display:block;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.045em;color:#475569;margin:14px 0 7px}
+    .required:after{content:" *";color:var(--red)}
+    input,select{
+      width:100%;border:1px solid #cbd5e1;border-radius:14px;padding:13px 14px;background:#fff;color:#111827;
+      outline:none;transition:.16s ease;box-shadow:0 1px 0 rgba(15,23,42,.03);
+    }
+    input:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(234,88,12,.14)}
+    .hint{font-size:12px;color:#64748b;line-height:1.5;margin-top:7px}
+    .btn{
+      border:0;border-radius:15px;padding:13px 18px;font-weight:950;color:#fff;background:var(--orange);
+      box-shadow:0 12px 24px rgba(234,88,12,.22);transition:.16s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    }
+    .btn:hover{transform:translateY(-1px);background:#c2410c}
+    .btn.secondary{background:#0f172a;box-shadow:0 12px 24px rgba(15,23,42,.18)}
+    .btn.secondary:hover{background:#1e293b}
+    .btn.light{background:#fff;color:#0f172a;border:1px solid #cbd5e1;box-shadow:0 10px 20px rgba(15,23,42,.08)}
+    .btn.danger{background:#dc2626;box-shadow:0 12px 24px rgba(220,38,38,.18)}
+    .msg{margin-top:16px;padding:14px 15px;border-radius:14px;font-weight:850;display:none;line-height:1.55}
+    .ok{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
+    .err{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+    .info{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+    .portal-foot{margin-top:20px;text-align:center;color:#94a3b8;font-size:11px;user-select:none}
+    .hidden-admin-trigger{display:inline-block;padding:6px 10px;border-radius:999px;transition:.18s ease;cursor:pointer}
+    .hidden-admin-trigger:hover{background:#f1f5f9;color:#475569}
+    .admin-shell{padding:0;display:none}.admin-shell.active{display:block;animation:fadeUp .22s ease both}
+    .admin-head{padding:20px 22px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .admin-head h2{margin:0;font-size:22px}.admin-head p{margin:5px 0 0;color:#cbd5e1;font-size:13px}
+    .admin-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .admin-body{padding:18px 20px 22px}
+    .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    .sum-card{border:1px solid var(--line);border-radius:18px;background:#fff;padding:15px;box-shadow:0 8px 18px rgba(15,23,42,.04)}
+    .sum-card span{display:block;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:#64748b;margin-bottom:8px}
+    .sum-card strong{font-size:26px;color:#0f172a}
+    .filters{display:grid;grid-template-columns:1.4fr .8fr .7fr;gap:12px;margin-bottom:14px;align-items:end}
+    .tablewrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}
+    table{width:100%;border-collapse:collapse;min-width:980px}
+    th,td{padding:11px 12px;border-bottom:1px solid #e2e8f0;text-align:left;font-size:13px;vertical-align:top}
+    th{position:sticky;top:0;background:#f8fafc;color:#334155;font-size:11px;text-transform:uppercase;letter-spacing:.05em;z-index:1}
+    tr:hover td{background:#fff7ed}
+    code{background:#f1f5f9;padding:3px 6px;border-radius:8px;font-size:12px;word-break:break-all}
+    .muted{font-size:11px;color:#64748b;line-height:1.5}
+    .rowbtn{padding:7px 10px;border:0;border-radius:10px;font-weight:900;cursor:pointer;margin:2px;font-size:12px}
+    .approve{background:#dcfce7;color:#166534}.reject{background:#fee2e2;color:#991b1b}.copy{background:#dbeafe;color:#1d4ed8}
+    .status-pill{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:950;border:1px solid #e2e8f0;background:#f8fafc;color:#475569}
+    .status-PENDING{background:#fffbeb;color:#b45309;border-color:#fde68a}.status-APPROVED{background:#ecfdf5;color:#047857;border-color:#a7f3d0}.status-REJECTED{background:#fef2f2;color:#b91c1c;border-color:#fecaca}
+    .mini-loader{padding:28px;text-align:center;color:#64748b;font-weight:850}
+    .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.55);border-top-color:#fff;border-radius:50%;display:inline-block;animation:spin .8s linear infinite;vertical-align:-3px;margin-right:8px}.btn.light .spinner,.mini-loader .spinner{border-color:#cbd5e1;border-top-color:#0f172a}@keyframes spin{to{transform:rotate(360deg)}}
+    .modal{position:fixed;inset:0;background:rgba(15,23,42,.68);backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex;animation:fade .16s ease both}@keyframes fade{from{opacity:0}to{opacity:1}}
+    .modal-card{width:min(440px,100%);background:#fff;border-radius:24px;box-shadow:0 28px 70px rgba(15,23,42,.28);overflow:hidden;border:1px solid rgba(255,255,255,.35);animation:pop .18s ease both}@keyframes pop{from{transform:scale(.97) translateY(8px);opacity:.3}to{transform:none;opacity:1}}
+    .modal-head{padding:18px 20px;background:#0f172a;color:#fff;display:flex;align-items:center;justify-content:space-between}.modal-head h3{margin:0}.xbtn{width:34px;height:34px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:50%;font-size:20px}.modal-body{padding:20px}
+    .toast{position:fixed;right:18px;bottom:18px;background:#0f172a;color:#fff;padding:12px 14px;border-radius:14px;box-shadow:0 18px 40px rgba(15,23,42,.25);z-index:120;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s ease;font-weight:850}.toast.show{opacity:1;transform:none}
+    .backend-warning{display:none;margin-bottom:16px;padding:12px 14px;border-radius:16px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-weight:850;line-height:1.5}.backend-warning.show{display:block}
+    @media(max-width:860px){.hero{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr}.datetime-card{justify-content:flex-start}.bar{align-items:flex-start}.brand{min-width:unset}.hero h2{font-size:26px}}
+    @media(max-width:560px){.grid,.info-grid{grid-template-columns:1fr}.summary{grid-template-columns:1fr}.wrap{padding:18px 12px 32px}.hero-main,.card-body,.card-head,.admin-body{padding-left:16px;padding-right:16px}.date-pill,.time-pill{width:100%;text-align:left}.admin-actions .btn{width:100%}}
+  </style>
 </head>
 <body>
-<header class="top">
-  <div class="bar">
-    <div class="brand">
-      <div class="logo">G</div>
-      <div><h1>GeoCalc Pro</h1><div class="sub">License Request Portal</div></div>
-    </div>
-    <div class="status-pill" id="publicStatus">Request License</div>
-    <div class="admin-indicator" id="adminIndicator">● Admin Mode</div>
-  </div>
-</header>
-<main class="wrap">
-  <section id="requestPanel" class="panel active">
-    <div class="hero">
-      <div>
-        <h2>Request License GeoCalc Pro</h2>
-        <p>Isi data berikut untuk meminta license key. Request akan masuk ke database admin dan diproses melalui panel internal.</p>
+  <header class="top">
+    <div class="bar">
+      <div class="brand" aria-label="GeoCalc Pro License Portal">
+        <div class="logo">G</div>
+        <div>
+          <h1>GeoCalc Pro</h1>
+          <div class="sub">License Request Portal</div>
+        </div>
       </div>
-      <div class="hero-badge">
-        <b>Basic & Professional</b>
-        <span>License request terhubung ke backend Apps Script dan database Google Sheet.</span>
+      <div class="datetime-card" aria-label="Informasi tanggal dan jam">
+        <div class="date-pill" id="currentDate">Memuat tanggal...</div>
+        <div class="time-pill" id="currentTime">--:--:-- WIB</div>
       </div>
     </div>
-    <div class="card">
-      <form id="requestForm">
-        <div class="grid">
-          <div><label>Nama Pengguna</label><input name="name" placeholder="Ongky Anggara" required></div>
-          <div><label>Instansi</label><input name="institution" placeholder="ITERA / Nama Instansi" required></div>
-        </div>
-        <label>Email</label><input type="email" name="email" placeholder="email@domain.com" required>
-        <label>Device ID</label><input name="deviceId" placeholder="GCP-WIN-XXXXXX" required>
-        <div class="grid">
-          <div><label>Edition</label><select name="edition"><option value="Basic">Basic</option><option value="Professional">Professional</option></select></div>
-          <div><label>Masa Aktif</label><select name="validDays"><option value="1095">3 Tahun</option><option value="730">2 Tahun</option><option value="365">1 Tahun</option><option value="180">6 Bulan</option></select></div>
-        </div>
-        <button class="btn" id="requestBtn" type="submit" style="width:100%;margin-top:20px">Kirim Request License</button>
-      </form>
-      <div id="requestMsg" class="msg"></div>
-      <div class="hidden-admin-text"><span id="hiddenAdminTrigger" title="System access">GeoCalc Pro License Portal</span></div>
-    </div>
-  </section>
+  </header>
 
-  <section id="adminPanel" class="panel">
-    <div class="hero">
-      <div>
-        <h2>Admin License</h2>
-        <p>Panel internal untuk memeriksa request, approve license, reject request, dan menyalin license key.</p>
-      </div>
-      <div class="hero-badge">
-        <b>Internal Access</b>
-        <span>Akses admin dibuka setelah PIN valid dari Apps Script backend.</span>
-      </div>
+  <main class="wrap">
+    <div class="backend-warning" id="backendWarning">
+      Backend Apps Script belum diatur. Edit baris <code>window.GEOCALC_BACKEND_URL</code> di file <code>docs/index.html</code>.
     </div>
-    <div class="card wide">
+
+    <section class="panel active" id="requestPanel">
+      <div class="hero">
+        <div class="hero-main">
+          <div class="eyebrow">● Official License Request</div>
+          <h2>Request License GeoCalc Pro</h2>
+          <p>Isi data pengguna, instansi, email, dan Device ID untuk mengajukan license key GeoCalc Pro. Request akan masuk ke database Google Sheet melalui Apps Script backend.</p>
+        </div>
+        <aside class="hero-side">
+          <p><b>Status halaman</b></p>
+          <p style="font-size:13px">Halaman publik hanya menampilkan form request. Panel admin disembunyikan dan hanya terbuka setelah validasi PIN.</p>
+          <div class="info-grid">
+            <div class="info-box"><div class="info-label">Tanggal</div><div class="info-value" id="sideDate">-</div></div>
+            <div class="info-box"><div class="info-label">Jam</div><div class="info-value" id="sideTime">-</div></div>
+            <div class="info-box"><div class="info-label">Zona</div><div class="info-value">WIB</div></div>
+            <div class="info-box"><div class="info-label">Mode</div><div class="info-value" id="publicStatus">Request</div></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Form Request License</h3>
+            <p>Pastikan email dan Device ID benar agar license dapat digunakan pada perangkat yang sesuai.</p>
+          </div>
+          <div class="badge">Backend Ready</div>
+        </div>
+        <div class="card-body">
+          <form id="requestForm">
+            <div class="grid">
+              <div>
+                <label class="required">Nama Pengguna</label>
+                <input name="name" placeholder="Ongky Anggara" autocomplete="name" required />
+              </div>
+              <div>
+                <label class="required">Instansi</label>
+                <input name="institution" placeholder="ITERA / Nama Instansi" autocomplete="organization" required />
+              </div>
+            </div>
+
+            <label class="required">Email</label>
+            <input type="email" name="email" placeholder="email@domain.com" autocomplete="email" required />
+
+            <label class="required">Device ID</label>
+            <input name="deviceId" placeholder="GCP-WIN-XXXXXX" autocomplete="off" required />
+            <div class="hint">Device ID diambil dari halaman aktivasi GeoCalc Pro pada komputer pengguna.</div>
+
+            <div class="grid">
+              <div>
+                <label>Edition</label>
+                <select name="edition">
+                  <option value="Basic">Basic</option>
+                  <option value="Professional">Professional</option>
+                </select>
+              </div>
+              <div>
+                <label>Masa Aktif</label>
+                <select name="validDays">
+                  <option value="1095">3 Tahun</option>
+                  <option value="730">2 Tahun</option>
+                  <option value="365" selected>1 Tahun</option>
+                  <option value="180">6 Bulan</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="btn" id="requestBtn" type="submit" style="width:100%;margin-top:20px">Kirim Request License</button>
+          </form>
+          <div id="requestMsg" class="msg"></div>
+          <div class="portal-foot">
+            <span id="hiddenAdminTrigger" class="hidden-admin-trigger" title="Admin access">GeoCalc Pro License Portal</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-shell" id="adminPanel">
       <div class="admin-head">
         <div>
-          <h3 style="margin:0;color:#0f172a">Daftar Request License</h3>
-          <p class="note" style="margin:4px 0 0">Data dimuat langsung dari Google Sheet melalui Apps Script.</p>
+          <h2>Admin License</h2>
+          <p>Kelola request, approve license, reject request, dan salin license key.</p>
         </div>
         <div class="admin-actions">
-          <button class="btn ghost small" id="refreshAdminBtn" type="button">Refresh</button>
-          <button class="btn danger small" id="logoutAdminBtn" type="button">Keluar Admin</button>
+          <button class="btn light" type="button" id="refreshAdminBtn">Refresh</button>
+          <button class="btn danger" type="button" id="logoutAdminBtn">Keluar Admin</button>
         </div>
       </div>
-      <div class="summary-grid">
-        <div class="summary-card"><b id="sumAll">0</b><span>Total</span></div>
-        <div class="summary-card"><b id="sumPending">0</b><span>Pending</span></div>
-        <div class="summary-card"><b id="sumApproved">0</b><span>Approved</span></div>
-        <div class="summary-card"><b id="sumRejected">0</b><span>Rejected</span></div>
-      </div>
-      <div class="toolbar">
-        <div><label style="margin-top:0">Cari Data</label><input class="searchInput" id="adminSearch" placeholder="Cari nama, email, device ID, status..."></div>
-        <div><label style="margin-top:0">Filter Status</label><select id="statusFilter"><option value="ALL">Semua Status</option><option value="PENDING">Pending</option><option value="APPROVED">Approved</option><option value="REJECTED">Rejected</option></select></div>
-      </div>
-      <div id="adminMsg" class="msg"></div>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th>Request ID</th><th>Nama</th><th>Email</th><th>Device ID</th><th>Edition</th><th>Status</th><th>License Key</th><th>Aksi</th></tr></thead>
-          <tbody id="adminRows"><tr><td colspan="8" style="text-align:center;color:#64748b">Login admin terlebih dahulu.</td></tr></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+      <div class="admin-body">
+        <div class="summary">
+          <div class="sum-card"><span>Total Dimuat</span><strong id="sumAll">0</strong></div>
+          <div class="sum-card"><span>Pending</span><strong id="sumPending">0</strong></div>
+          <div class="sum-card"><span>Approved</span><strong id="sumApproved">0</strong></div>
+          <div class="sum-card"><span>Rejected</span><strong id="sumRejected">0</strong></div>
+        </div>
 
-  <section id="settingPanel" class="panel">
-    <div class="hero">
-      <div><h2>Setting Backend</h2><p>Panel setting untuk memeriksa URL backend yang dipakai frontend.</p></div>
-    </div>
-    <div class="card">
-      <label>Backend Apps Script URL</label>
-      <input id="backendPreview" readonly>
-      <p class="note">Edit nilai <code>window.GEOCALC_BACKEND_URL</code> langsung pada file <code>docs/index.html</code>, lalu isi URL Web App Apps Script hasil deployment.</p>
-    </div>
-  </section>
-</main>
+        <div class="filters">
+          <div>
+            <label>Cari Request</label>
+            <input id="adminSearch" placeholder="Cari nama, email, device ID, request ID, license key..." />
+          </div>
+          <div>
+            <label>Status</label>
+            <select id="statusFilter">
+              <option value="ALL">Semua Status</option>
+              <option value="PENDING">Pending</option>
+              <option value="APPROVED">Approved</option>
+              <option value="REJECTED">Rejected</option>
+            </select>
+          </div>
+          <div>
+            <label>Data Terakhir</label>
+            <select id="limitSelect">
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="200" selected>200</option>
+              <option value="500">500</option>
+            </select>
+          </div>
+        </div>
 
-<div class="modal" id="pinModal" role="dialog" aria-modal="true" aria-labelledby="pinTitle">
-  <div class="modal-card">
-    <div class="modal-head">
-      <h3 id="pinTitle">Admin Verification</h3>
-      <button class="xbtn" id="closePinModal" type="button" aria-label="Tutup">×</button>
-    </div>
-    <div class="modal-body">
-      <form id="pinForm">
-        <label style="margin-top:0">Admin PIN</label>
-        <input id="pinInput" type="password" autocomplete="current-password" placeholder="Masukkan PIN admin" required>
-        <button class="btn secondary" id="pinBtn" type="submit" style="width:100%;margin-top:16px">Masuk Admin</button>
-      </form>
-      <div id="pinMsg" class="msg"></div>
-      <p class="note">PIN tidak disimpan di GitHub. Validasi dilakukan melalui Apps Script backend.</p>
+        <div id="adminMsg" class="msg"></div>
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Request</th>
+                <th>Pengguna</th>
+                <th>Email</th>
+                <th>Device ID</th>
+                <th>Edition</th>
+                <th>Status</th>
+                <th>License Key</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="adminRows">
+              <tr><td colspan="8" class="mini-loader">Login admin untuk memuat data.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="pinModal" role="dialog" aria-modal="true" aria-labelledby="pinTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="pinTitle">Admin Access</h3>
+        <button class="xbtn" id="closePinModal" type="button" aria-label="Tutup">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="pinForm">
+          <label class="required">Admin PIN</label>
+          <input id="pinInput" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Masukkan PIN admin" required />
+          <button class="btn secondary" id="pinBtn" type="submit" style="width:100%;margin-top:16px">Masuk Admin</button>
+        </form>
+        <div id="pinMsg" class="msg"></div>
+        <p class="hint">PIN tidak disimpan di GitHub. Validasi dilakukan melalui Apps Script backend. Shortcut admin: <b>Ctrl + Alt + A</b>.</p>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-window.GEOCALC_BACKEND_URL = 'https://script.google.com/macros/s/AKfycby9dzI01PhW9vhUipqKz2vsoTSCMD5YBIgLiUXYVml_SNm_34EoBpaosyDSskuiblmk5g/exec';
-let ADMIN_PIN_CACHE='';
-let ADMIN_ROWS_CACHE=[];
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-const $=id=>document.getElementById(id);
-function showPanel(name){
-  ['request','admin','setting'].forEach(p=>$(p+'Panel').classList.toggle('active',p===name));
-  document.body.classList.toggle('admin-open',name==='admin');
-  $('publicStatus').textContent = name==='admin' ? 'Admin License' : 'Request License';
-  if(name==='admin') window.scrollTo({top:0,behavior:'smooth'});
-}
-function showMsg(id,type,text){const el=$(id); el.className='msg '+(type==='ok'?'ok':type==='info'?'info':'err'); el.style.display='block'; el.innerHTML=text;}
-function hideMsg(id){$(id).style.display='none'}
-function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
-function apiCall(action, params={}, options={}){
-  return new Promise((resolve,reject)=>{
-    const url=String(window.GEOCALC_BACKEND_URL||'').trim();
-    if(!url || url.includes('PASTE_APPS_SCRIPT_WEB_APP_URL_HERE')){reject(new Error('Backend URL belum diatur. Edit window.GEOCALC_BACKEND_URL di index.html.'));return;}
-    const cb='__gcp_jsonp_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-    const s=document.createElement('script'); const timer=setTimeout(()=>{cleanup();reject(new Error('Koneksi backend timeout.'));}, options.timeout||30000);
-    function cleanup(){clearTimeout(timer); try{delete window[cb];}catch(e){window[cb]=undefined} if(s.parentNode)s.parentNode.removeChild(s)}
-    window[cb]=res=>{cleanup();resolve(res||{ok:false,message:'Respons kosong dari backend.'})};
-    const q=new URLSearchParams(); q.set('action',action); q.set('callback',cb); q.set('_ts',String(Date.now())); Object.keys(params||{}).forEach(k=>{if(params[k]!==undefined&&params[k]!==null)q.set(k,String(params[k]));});
-    s.src=url+(url.includes('?')?'&':'?')+q.toString(); s.onerror=()=>{cleanup();reject(new Error('Gagal memuat Apps Script. Pastikan deployment access: Anyone.'));}; document.head.appendChild(s);
-  });
-}
-function openPinModal(){hideMsg('pinMsg'); $('pinModal').classList.add('show'); setTimeout(()=>$('pinInput').focus(),80)}
-function closePinModal(){ $('pinModal').classList.remove('show'); $('pinInput').value=''; hideMsg('pinMsg')}
+  <script>
+    // GANTI URL INI DENGAN URL WEB APP APPS SCRIPT ANDA
+    window.GEOCALC_BACKEND_URL = 'https://script.google.com/macros/s/AKfycbwFUnPmm3PeIfaaJpzS-UhV7hvRXdhUfmKzHAYKaxW0NIDBTRa6w0aXQc1433_EcOC_Vg/exec';
 
-$('hiddenAdminTrigger').addEventListener('click', openPinModal);
-$('closePinModal').addEventListener('click', closePinModal);
-$('pinModal').addEventListener('click', e=>{if(e.target.id==='pinModal') closePinModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape' && $('pinModal').classList.contains('show')) closePinModal();});
-// Shortcut opsional untuk pemilik: Ctrl + Alt + A
-window.addEventListener('keydown',e=>{if(e.ctrlKey&&e.altKey&&e.key.toLowerCase()==='a') openPinModal();});
+    let ADMIN_PIN_CACHE = '';
+    let ADMIN_ROWS_CACHE = [];
+    let ADMIN_LOADING = false;
 
-$('backendPreview').value = window.GEOCALC_BACKEND_URL;
+    const $ = (id) => document.getElementById(id);
 
-$('requestForm').addEventListener('submit', async e=>{
-  e.preventDefault(); const btn=$('requestBtn'); btn.disabled=true; btn.textContent='Mengirim request...'; hideMsg('requestMsg');
-  try{const data=Object.fromEntries(new FormData(e.target).entries()); const res=await apiCall('submitLicenseRequest',data); if(res&&res.ok){showMsg('requestMsg','ok',(res.message||'Request berhasil.')+'<br><br><b>Request ID:</b> '+(res.requestId||'-')); e.target.reset();} else {showMsg('requestMsg','err',(res&&res.message)||'Request gagal.');}}
-  catch(err){showMsg('requestMsg','err',err.message||String(err));} finally{btn.disabled=false;btn.textContent='Kirim Request License';}
-});
+    function updateClock(){
+      const now = new Date();
+      const dateLong = new Intl.DateTimeFormat('id-ID', {
+        weekday:'long', day:'2-digit', month:'long', year:'numeric', timeZone:'Asia/Jakarta'
+      }).format(now);
+      const dateShort = new Intl.DateTimeFormat('id-ID', {
+        day:'2-digit', month:'short', year:'numeric', timeZone:'Asia/Jakarta'
+      }).format(now);
+      const time = new Intl.DateTimeFormat('id-ID', {
+        hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZone:'Asia/Jakarta'
+      }).format(now).replace(/\./g,':');
+      $('currentDate').textContent = dateLong;
+      $('currentTime').textContent = time + ' WIB';
+      $('sideDate').textContent = dateShort;
+      $('sideTime').textContent = time;
+    }
 
-$('pinForm').addEventListener('submit', async e=>{
-  e.preventDefault(); const pin=$('pinInput').value.trim(); if(!pin) return;
-  const btn=$('pinBtn'); btn.disabled=true; btn.textContent='Memverifikasi...'; hideMsg('pinMsg');
-  try{
-    const res=await apiCall('getAdminRequests',{pin});
-    if(!res.ok) throw new Error(res.message||'PIN admin tidak valid.');
-    ADMIN_PIN_CACHE=pin; ADMIN_ROWS_CACHE=res.requests||[]; closePinModal(); showPanel('admin'); renderAdmin(); showMsg('adminMsg','ok','Admin berhasil masuk. Data request berhasil dimuat.');
-  }catch(err){showMsg('pinMsg','err',err.message||String(err));}
-  finally{btn.disabled=false; btn.textContent='Masuk Admin';}
-});
+    function init(){
+      updateClock();
+      setInterval(updateClock, 1000);
+      checkBackendConfig();
+      bindEvents();
+      if ((location.hash || '').replace('#','').toLowerCase() === 'admin') openPinModal();
+    }
 
-async function reloadAdmin(){
-  if(!ADMIN_PIN_CACHE){openPinModal();return;}
-  const btn=$('refreshAdminBtn'); btn.disabled=true; btn.textContent='Memuat...'; hideMsg('adminMsg');
-  try{const res=await apiCall('getAdminRequests',{pin:ADMIN_PIN_CACHE}); if(!res.ok) throw new Error(res.message||'Gagal memuat data.'); ADMIN_ROWS_CACHE=res.requests||[]; renderAdmin(); showMsg('adminMsg','ok','Data request berhasil diperbarui.');}
-  catch(err){showMsg('adminMsg','err',err.message||String(err));}
-  finally{btn.disabled=false; btn.textContent='Refresh';}
-}
-$('refreshAdminBtn').addEventListener('click', reloadAdmin);
-$('logoutAdminBtn').addEventListener('click',()=>{ADMIN_PIN_CACHE=''; ADMIN_ROWS_CACHE=[]; renderAdmin(); showPanel('request');});
-$('adminSearch').addEventListener('input', renderAdmin);
-$('statusFilter').addEventListener('change', renderAdmin);
+    function checkBackendConfig(){
+      const url = String(window.GEOCALC_BACKEND_URL || '').trim();
+      if (!url || url.includes('PASTE_APPS_SCRIPT_WEB_APP_URL_HERE')) $('backendWarning').classList.add('show');
+      else $('backendWarning').classList.remove('show');
+    }
 
-function renderAdmin(){
-  const rows=ADMIN_ROWS_CACHE||[];
-  const norm=s=>String(s||'').toLowerCase();
-  const q=norm($('adminSearch').value);
-  const f=$('statusFilter').value;
-  const filtered=rows.filter(r=>{
-    const status=String(r.status||'').toUpperCase();
-    const matchStatus=f==='ALL'||status===f;
-    const hay=[r.requestId,r.name,r.email,r.deviceId,r.edition,r.status,r.licenseKey].map(norm).join(' ');
-    return matchStatus && (!q || hay.includes(q));
-  });
-  const statusOf=r=>String(r.status||'').toUpperCase();
-  $('sumAll').textContent=rows.length;
-  $('sumPending').textContent=rows.filter(r=>statusOf(r)==='PENDING').length;
-  $('sumApproved').textContent=rows.filter(r=>statusOf(r)==='APPROVED').length;
-  $('sumRejected').textContent=rows.filter(r=>statusOf(r)==='REJECTED').length;
-  const tb=$('adminRows');
-  if(!rows.length){tb.innerHTML='<tr><td colspan="8" style="text-align:center;color:#64748b">Belum ada request.</td></tr>'; return;}
-  if(!filtered.length){tb.innerHTML='<tr><td colspan="8" style="text-align:center;color:#64748b">Tidak ada data sesuai filter.</td></tr>'; return;}
-  tb.innerHTML=filtered.map(r=>{
-    const st=esc(r.status||'-');
-    const key=esc(r.licenseKey||'');
-    const actionBtns = String(r.status||'').toUpperCase()==='APPROVED'
-      ? `<button class="rowbtn copy" onclick="copyText('${key}')">Copy Key</button>`
-      : `<button class="rowbtn approve" onclick="approveReq('${esc(r.requestId)}')">Approve</button><button class="rowbtn reject" onclick="rejectReq('${esc(r.requestId)}')">Reject</button>`;
-    return `<tr><td>${esc(r.requestId)}</td><td><b>${esc(r.name)}</b><br><span style="color:#64748b">${esc(r.institution||'')}</span></td><td>${esc(r.email)}</td><td><code>${esc(r.deviceId)}</code></td><td>${esc(r.edition)}</td><td><b>${st}</b></td><td>${key?`<code>${key}</code>`:'-'}</td><td>${actionBtns}</td></tr>`;
-  }).join('');
-}
-async function approveReq(requestId){
-  try{const res=await apiCall('approveRequest',{pin:ADMIN_PIN_CACHE,requestId}); if(!res.ok)throw new Error(res.message||'Approve gagal.'); showMsg('adminMsg','ok',res.message||'Approve berhasil.'); await reloadAdmin();}
-  catch(err){showMsg('adminMsg','err',err.message||String(err));}
-}
-async function rejectReq(requestId){
-  const reason=prompt('Alasan reject:', 'Data belum lengkap'); if(reason===null)return;
-  try{const res=await apiCall('rejectRequest',{pin:ADMIN_PIN_CACHE,requestId,reason}); if(!res.ok)throw new Error(res.message||'Reject gagal.'); showMsg('adminMsg','ok',res.message||'Reject berhasil.'); await reloadAdmin();}
-  catch(err){showMsg('adminMsg','err',err.message||String(err));}
-}
-function copyText(text){
-  if(!text){showMsg('adminMsg','err','License key kosong.');return;}
-  navigator.clipboard?.writeText(text).then(()=>showMsg('adminMsg','ok','License key berhasil disalin.')).catch(()=>showMsg('adminMsg','info','Salin manual: <code>'+esc(text)+'</code>'));
-}
-// Akses setting tetap tersembunyi untuk debugging: URL #setting
-if(location.hash.replace('#','').toLowerCase()==='setting') showPanel('setting');
-</script>
+    function bindEvents(){
+      $('requestForm').addEventListener('submit', submitRequest);
+      $('hiddenAdminTrigger').addEventListener('click', openPinModal);
+      $('closePinModal').addEventListener('click', closePinModal);
+      $('pinModal').addEventListener('click', (e) => { if (e.target.id === 'pinModal') closePinModal(); });
+      $('pinForm').addEventListener('submit', loginAdmin);
+      $('refreshAdminBtn').addEventListener('click', () => loadAdminData(true));
+      $('logoutAdminBtn').addEventListener('click', logoutAdmin);
+      $('adminSearch').addEventListener('input', renderAdmin);
+      $('statusFilter').addEventListener('change', renderAdmin);
+      $('limitSelect').addEventListener('change', () => loadAdminData(true));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && $('pinModal').classList.contains('show')) closePinModal();
+        if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'a') openPinModal();
+      });
+    }
+
+    function apiCall(action, params = {}, options = {}){
+      return new Promise((resolve, reject) => {
+        const url = String(window.GEOCALC_BACKEND_URL || '').trim();
+        if (!url || url.includes('PASTE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+          reject(new Error('Backend URL belum diatur. Edit window.GEOCALC_BACKEND_URL di index.html.'));
+          return;
+        }
+
+        const cb = '__gcp_jsonp_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+        const script = document.createElement('script');
+        const timer = setTimeout(() => {
+          cleanup();
+          reject(new Error('Koneksi backend timeout. Cek deployment Apps Script dan koneksi internet.'));
+        }, options.timeout || 20000);
+
+        function cleanup(){
+          clearTimeout(timer);
+          try { delete window[cb]; } catch(e) { window[cb] = undefined; }
+          if (script.parentNode) script.parentNode.removeChild(script);
+        }
+
+        window[cb] = (res) => { cleanup(); resolve(res || {ok:false, message:'Respons kosong dari backend.'}); };
+        const q = new URLSearchParams();
+        q.set('action', action);
+        q.set('callback', cb);
+        q.set('_ts', String(Date.now()));
+        Object.keys(params || {}).forEach(k => {
+          if (params[k] !== undefined && params[k] !== null) q.set(k, String(params[k]));
+        });
+        script.src = url + (url.includes('?') ? '&' : '?') + q.toString();
+        script.onerror = () => {
+          cleanup();
+          reject(new Error('Gagal memuat Apps Script. Pastikan deployment access: Anyone.'));
+        };
+        document.head.appendChild(script);
+      });
+    }
+
+    async function submitRequest(e){
+      e.preventDefault();
+      const btn = $('requestBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Mengirim request...';
+      hideMsg('requestMsg');
+
+      try{
+        const data = Object.fromEntries(new FormData(e.target).entries());
+        const res = await apiCall('submitLicenseRequest', data, {timeout:30000});
+        if (res && res.ok){
+          showMsg('requestMsg','ok', (res.message || 'Request berhasil dikirim.') + '<br><br><b>Request ID:</b> ' + esc(res.requestId || '-'));
+          e.target.reset();
+        } else {
+          showMsg('requestMsg','err', (res && res.message) || 'Request gagal dikirim.');
+        }
+      } catch(err){
+        showMsg('requestMsg','err', err.message || String(err));
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Kirim Request License';
+      }
+    }
+
+    function openPinModal(){
+      hideMsg('pinMsg');
+      $('pinInput').value = '';
+      $('pinModal').classList.add('show');
+      setTimeout(() => $('pinInput').focus(), 80);
+    }
+
+    function closePinModal(){
+      $('pinModal').classList.remove('show');
+      $('pinInput').value = '';
+      hideMsg('pinMsg');
+    }
+
+    async function loginAdmin(e){
+      e.preventDefault();
+      const pin = $('pinInput').value.trim();
+      if (!pin) return;
+
+      const btn = $('pinBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Memverifikasi PIN...';
+      hideMsg('pinMsg');
+
+      try{
+        const res = await apiCall('adminLogin', {pin}, {timeout:15000});
+        if (!res.ok) throw new Error(res.message || 'PIN admin tidak valid.');
+        ADMIN_PIN_CACHE = pin;
+        closePinModal();
+        showAdminPanel();
+        showMsg('adminMsg','info','Admin berhasil masuk. Data request sedang dimuat...');
+        setLoadingRows('Memuat data request dari Google Sheet...');
+        loadAdminData(false);
+      } catch(err){
+        showMsg('pinMsg','err', err.message || String(err));
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Masuk Admin';
+      }
+    }
+
+    function showAdminPanel(){
+      $('requestPanel').classList.remove('active');
+      $('adminPanel').classList.add('active');
+      $('publicStatus').textContent = 'Admin';
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function showRequestPanel(){
+      $('adminPanel').classList.remove('active');
+      $('requestPanel').classList.add('active');
+      $('publicStatus').textContent = 'Request';
+      history.replaceState(null, '', location.pathname + location.search);
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function logoutAdmin(){
+      ADMIN_PIN_CACHE = '';
+      ADMIN_ROWS_CACHE = [];
+      renderAdmin();
+      hideMsg('adminMsg');
+      showRequestPanel();
+      toast('Keluar dari admin.');
+    }
+
+    async function loadAdminData(isRefresh = true){
+      if (!ADMIN_PIN_CACHE) { openPinModal(); return; }
+      if (ADMIN_LOADING) return;
+
+      ADMIN_LOADING = true;
+      const btn = $('refreshAdminBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Memuat';
+      if (isRefresh) hideMsg('adminMsg');
+
+      try{
+        const limit = $('limitSelect').value || '200';
+        const res = await apiCall('getAdminRequests', {pin:ADMIN_PIN_CACHE, limit}, {timeout:25000});
+        if (!res.ok) throw new Error(res.message || 'Gagal memuat data request.');
+        ADMIN_ROWS_CACHE = res.rows || res.requests || [];
+        renderAdmin();
+        showMsg('adminMsg','ok','Data berhasil dimuat. Ditampilkan ' + ADMIN_ROWS_CACHE.length + ' request terakhir.');
+      } catch(err){
+        showMsg('adminMsg','err', err.message || String(err));
+        $('adminRows').innerHTML = '<tr><td colspan="8" class="mini-loader">Gagal memuat data. Klik Refresh untuk mencoba lagi.</td></tr>';
+      } finally {
+        ADMIN_LOADING = false;
+        btn.disabled = false;
+        btn.textContent = 'Refresh';
+      }
+    }
+
+    function renderAdmin(){
+      const rows = ADMIN_ROWS_CACHE || [];
+      const query = norm($('adminSearch').value);
+      const statusFilter = $('statusFilter').value;
+      const filtered = rows.filter(r => {
+        const status = String(r.status || '').toUpperCase();
+        const matchStatus = statusFilter === 'ALL' || status === statusFilter;
+        const haystack = [r.requestId,r.name,r.institution,r.email,r.deviceId,r.edition,r.status,r.licenseKey].map(norm).join(' ');
+        return matchStatus && (!query || haystack.includes(query));
+      });
+
+      const statusOf = r => String(r.status || '').toUpperCase();
+      $('sumAll').textContent = rows.length;
+      $('sumPending').textContent = rows.filter(r => statusOf(r) === 'PENDING').length;
+      $('sumApproved').textContent = rows.filter(r => statusOf(r) === 'APPROVED').length;
+      $('sumRejected').textContent = rows.filter(r => statusOf(r) === 'REJECTED').length;
+
+      const tbody = $('adminRows');
+      if (!ADMIN_PIN_CACHE) {
+        tbody.innerHTML = '<tr><td colspan="8" class="mini-loader">Login admin untuk memuat data.</td></tr>';
+        return;
+      }
+      if (!rows.length) {
+        tbody.innerHTML = '<tr><td colspan="8" class="mini-loader">Belum ada request pada limit data yang dimuat.</td></tr>';
+        return;
+      }
+      if (!filtered.length) {
+        tbody.innerHTML = '<tr><td colspan="8" class="mini-loader">Tidak ada data sesuai filter.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(r => {
+        const status = String(r.status || '-').toUpperCase();
+        const key = String(r.licenseKey || '');
+        const requestId = String(r.requestId || '');
+        const actionButtons = makeActionButtons(status, key, requestId);
+        return `
+          <tr>
+            <td><b>${esc(requestId)}</b><br><span class="muted">${esc(r.timestamp || '')}</span></td>
+            <td><b>${esc(r.name || '')}</b><br><span class="muted">${esc(r.institution || '')}</span></td>
+            <td>${esc(r.email || '')}</td>
+            <td><code>${esc(r.deviceId || '')}</code></td>
+            <td>${esc(r.edition || '')}<br><span class="muted">Valid: ${esc(r.validUntil || '-')}</span></td>
+            <td><span class="status-pill status-${esc(status)}">${esc(status)}</span></td>
+            <td>${key ? '<code>' + esc(key) + '</code>' : '-'}</td>
+            <td>${actionButtons}</td>
+          </tr>`;
+      }).join('');
+    }
+
+    function makeActionButtons(status, key, requestId){
+      const safeId = escAttr(requestId);
+      const safeKey = escAttr(key);
+      if (status === 'APPROVED' && key) return `<button class="rowbtn copy" onclick="copyText('${safeKey}')">Copy Key</button>`;
+      if (status === 'REJECTED') return '<span class="muted">Rejected</span>';
+      return `<button class="rowbtn approve" onclick="approveReq('${safeId}')">Approve</button><button class="rowbtn reject" onclick="rejectReq('${safeId}')">Reject</button>`;
+    }
+
+    async function approveReq(requestId){
+      if (!confirm('Approve request ini dan buat license key?')) return;
+      showMsg('adminMsg','info','Memproses approve dan pembuatan license...');
+      try{
+        const res = await apiCall('approveRequest', {pin:ADMIN_PIN_CACHE, requestId}, {timeout:35000});
+        if (!res.ok) throw new Error(res.message || 'Approve gagal.');
+        showMsg('adminMsg','ok', res.message || 'Approve berhasil.');
+        await loadAdminData(false);
+      } catch(err){
+        showMsg('adminMsg','err', err.message || String(err));
+      }
+    }
+
+    async function rejectReq(requestId){
+      const reason = prompt('Alasan reject:', 'Data belum lengkap');
+      if (reason === null) return;
+      showMsg('adminMsg','info','Memproses reject request...');
+      try{
+        const res = await apiCall('rejectRequest', {pin:ADMIN_PIN_CACHE, requestId, reason}, {timeout:25000});
+        if (!res.ok) throw new Error(res.message || 'Reject gagal.');
+        showMsg('adminMsg','ok', res.message || 'Reject berhasil.');
+        await loadAdminData(false);
+      } catch(err){
+        showMsg('adminMsg','err', err.message || String(err));
+      }
+    }
+
+    function copyText(text){
+      if (!text) { toast('License key kosong.'); return; }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => toast('License key disalin.')).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text){
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy'); toast('License key disalin.'); }
+      catch(e) { showMsg('adminMsg','info','Salin manual: <code>' + esc(text) + '</code>'); }
+      document.body.removeChild(ta);
+    }
+
+    function setLoadingRows(text){
+      $('adminRows').innerHTML = '<tr><td colspan="8" class="mini-loader"><span class="spinner"></span>' + esc(text || 'Memuat data...') + '</td></tr>';
+    }
+
+    function showMsg(id,type,text){
+      const el = $(id);
+      el.className = 'msg ' + (type === 'ok' ? 'ok' : type === 'info' ? 'info' : 'err');
+      el.style.display = 'block';
+      el.innerHTML = text;
+    }
+
+    function hideMsg(id){ $(id).style.display = 'none'; }
+    function norm(v){ return String(v || '').toLowerCase().trim(); }
+    function esc(v){ return String(v ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+    function escAttr(v){ return String(v ?? '').replace(/[\\'"\n\r<>]/g, ''); }
+    function toast(text){
+      const t = $('toast');
+      t.textContent = text;
+      t.classList.add('show');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => t.classList.remove('show'), 2400);
+    }
+
+    init();
+  </script>
 </body>
 </html>
